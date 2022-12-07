@@ -200,7 +200,6 @@ resource "aws_security_group" "aws_bastion_sg" {
     to_port     = 9090
   }
 
-  }
   name   = "AWS-Security_group1"
   vpc_id = aws_vpc.aws_vps_1.id
 }
