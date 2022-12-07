@@ -151,6 +151,7 @@ resource "aws_nat_gateway" "aws_nat_gateway" {
   allocation_id = aws_eip.aws_elastic_ip.id
   connectivity_type = "public"
   subnet_id         = aws_subnet.aws_bastion_subnet.id
+
 }
 
 
@@ -183,6 +184,20 @@ resource "aws_security_group" "aws_bastion_sg" {
     from_port   = 22
     protocol    = "tcp"
     to_port     = 22
+  }
+
+  ingress {
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 3000
+    protocol    = "tcp"
+    to_port     = 3000
+  }  
+
+ ingress {
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 9090
+    protocol    = "tcp"
+    to_port     = 9090
   }
 
   name   = "AWS-Security_group1"
